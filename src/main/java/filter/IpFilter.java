@@ -1,4 +1,4 @@
-package ipfilter;
+package filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -19,7 +19,7 @@ public class IpFilter implements Filter {
         String forbiddenIp = "127.0.0.1";
         String remoteIp = request.getRemoteAddr();
         if (remoteIp.equals(forbiddenIp)) {
-            ((HttpServletResponse)response).sendError(403);
+            ((HttpServletResponse)response).sendError(404);
         }else
             chain.doFilter(request,response);
     }
